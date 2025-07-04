@@ -1,0 +1,123 @@
+.container {
+  background-color: rgba(30, 144, 255, 0.2); /* transparent darker blue */
+  border: 2px solid #89c4f4;
+  border-radius: 10px;
+  width: 1300px;
+  margin: 30px auto;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  align-items: center;
+}
+
+h1 {
+  font-size: 21px;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.date-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.left {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+  color: #007bff;
+}
+
+.left .date{
+  border: 2px solid #007bff;
+  background-color: rgba(0, 123, 255, 0.1); /* transparent blue box */
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgb(67, 67, 67);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background:none;
+}
+.left .active{
+ border: 2px solid #007bff;
+  background-color: #007bff;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgb(67, 67, 67);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  color: white;
+  
+}
+
+.right {
+  margin-left: auto;
+}
+
+.right button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 30px;
+}
+
+.right button:hover {
+  background-color: #0056b3;
+}
+
+
+/* ✅ Responsive styles for mobile */
+@media (max-width: 768px) {
+    .container{
+        width: 400px;
+    }
+  .date-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .left {
+    justify-content: center;
+  }
+
+  .right {
+    margin-left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .right button {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  h1 {
+    text-align: center;
+  }
+}

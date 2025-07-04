@@ -1,0 +1,146 @@
+.popular {
+  padding: 40px 100px;
+  border-bottom: 1px solid gray;
+  background: linear-gradient(to bottom, #f8f9fa, #b7d3f8, #f1f5f9); 
+}
+
+/* ------- Top Heading ------- */
+.top-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.top-heading h1 {
+  font-size: 25px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.top-heading div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #007bff;
+  font-weight: 500;
+}
+
+/* ------- Flight Cards Grid ------- */
+.flights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 20px;
+  cursor: pointer;
+}
+
+.flights > div {
+  background: rgb(234, 233, 233);
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.flights img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.flights h3 {
+  font-size: 20px;
+  margin: 8px 0;
+  color: #007bff;
+}
+
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 16px;
+}
+
+.flights button {
+  padding: 10px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.flights button:hover {
+  background-color: #0056b3;
+}
+
+/* ------- Show More Button ------- */
+.popular > div:last-child {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.popular > div:last-child button {
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.popular > div:last-child button:hover {
+  background-color: #111;
+}
+
+/* ------- Mobile Responsive Styles ------- */
+@media screen and (max-width: 768px) {
+  .popular {
+    padding: 20px;
+  }
+
+  .top-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .top-heading h1 {
+    font-size: 24px;
+  }
+
+  .flights img {
+    height: 160px;
+  }
+
+  .flights h3 {
+    font-size: 18px;
+  }
+
+  .details {
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .flights button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .popular > div:last-child button {
+    width: 93%;
+    font-size: 15px;
+  }
+}

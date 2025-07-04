@@ -1,0 +1,215 @@
+.seats-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 130px;
+  background: linear-gradient(to bottom, #f8f9fa, #b7d3f8, #f1f5f9); 
+}
+
+.seat-layout {
+  display: flex;
+  border-radius: 10px;
+  padding: 30px 40px;
+  gap: 40px;
+  width: 100%;
+  max-width: 1000px;
+  box-sizing: border-box;
+}
+
+.timings-box {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid rgb(37, 122, 225);
+  padding: 30px;
+  max-height: fit-content;
+  margin-top: 100px;
+  border-radius: 5px;
+}
+
+.timings-box h3 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  text-align: left;
+  color: rgb(37, 122, 225);
+}
+
+.timings-box ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.timings-box li {
+  background: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  border: 1px solid rgb(37, 122, 225);
+  font-weight: 500;
+  cursor: pointer;
+}
+.timings-box ul .active-time{
+padding: 8px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  border: 1px solid rgb(37, 122, 225);
+  font-weight: 500;
+  cursor: pointer;
+   background-color: rgb(37, 122, 225);
+  color: white;
+}
+.timings-box li:hover{
+    background-color: rgb(37, 122, 225);
+  color: white;
+}
+
+.right-section-seat {
+  flex: 1;
+}
+
+.right-section-seat h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.screen-label {
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.all-seats {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.seat-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* aisle space */
+}
+
+.seat-side {
+  display: flex;
+  gap: 8px;
+}
+
+.seat-box {
+  background : none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+  width: 20px;
+  height: 23px;
+  border: 1px solid rgb(37, 122, 225);
+}
+.active-seat{
+    padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+  width: 20px;
+  height: 23px;
+  border: 1px solid rgb(37, 122, 225);
+  background-color: #2c97f5;
+  color: white;
+}
+
+.seat-box:hover {
+  background-color: #2c97f5;
+  color: white;
+}
+
+.checkout-btn {
+  display: block;
+  background-color: #0077b6;
+  color: white;
+  padding: 12px 24px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin: 0 auto;
+}
+
+.checkout-btn:hover {
+  background-color: #023e8a;
+}
+.seats-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background-color: #f8f9fa;
+  padding: 40px;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.seats-wrapper h2 {
+  font-size: 20px;
+  color: #ea6161;
+  margin-bottom: 20px;
+}
+
+.seats-wrapper button {
+  background-color: #0077b6;
+  color: #fff;
+  padding: 12px 24px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.seats-wrapper button:hover {
+  background-color: #023e8a;
+}
+
+
+@media (max-width: 768px) {
+  .seat-layout {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .timings-box {
+    width: 100%;
+    align-items: center;
+  }
+
+  .timings-box ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .seat-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}

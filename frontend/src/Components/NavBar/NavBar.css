@@ -1,0 +1,148 @@
+/* === Base Navbar === */
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 30px;
+  border-bottom: 1px solid grey;
+  position: fixed;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1); /* transparent white */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* for Safari */
+}
+
+.navbar-left h1 {
+  font-size: 30px;
+  color: #2469ff
+}
+
+.navbar-middle ul{
+  display: flex;
+  gap: 20px;
+  color: rgb(58, 57, 57);
+  font-weight: bold;
+  list-style: none;
+  border: 1px solid  #007bff;
+  padding: 15px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: none;
+}
+.navbar-middle ul li a {
+  font-weight: bold;
+  font-size: 12px;
+  text-decoration: none;
+  color: rgb(58, 57, 57);
+  padding: 8px 12px;
+  border-radius: 10px;
+  transition: 0.3s ease-in-out;
+}
+
+.navbar-middle ul li a:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+  color: #2469ff;
+}
+
+.navbar-middle ul li a.active {
+  color: blue;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar-right .login {
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+  background-color: #3172ff;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+}
+.navbar-right button:hover{
+  background-color: rgb(51, 51, 246);
+}
+.navbar-right button:active{
+  background-color: rgb(83, 83, 255);
+}
+
+.menu-icon {
+  display: none;
+  cursor: pointer;
+}
+
+.active {
+  color: blue;
+  transition: 0.25s ease-in-out;
+}
+
+/* === Mobile Styles === */
+@media screen and (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .navbar-middle,
+  .navbar-right {
+    display: none; /* hide on small screens */
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 10;
+  }
+
+  .dropdown-menu ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+
+  .dropdown-menu li {
+    font-weight: bold;
+    color: grey;
+    cursor: pointer;
+  }
+
+  .mobile-login  {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .mobile-login .login {
+    width: 100px;
+    height: 35px;
+    font-size: 14px;
+   background-color: #007bff;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  .mobile-login button:hover{
+    background-color: rgb(51, 51, 246);
+  }
+  .mobile-login button:active{
+    background-color: rgb(83, 83, 255);
+  }
+  .dropdown-menu li.active{
+    color: blue;
+    transition: 0.25s ease-in-out;
+  }
+}
