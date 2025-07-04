@@ -1,14 +1,9 @@
 import { Inngest } from "inngest";
 import userModel from "../Models/userModel.js";
-import dotenv from 'dotenv'
-dotenv.config();
 
 // Create a client to send and receive events
 export const inngest = new Inngest({
     id : "fly-zone",
-    signingKey: process.env.INNGEST_SIGNING_KEY, // optional, but fixes auth false
-    eventKey: process.env.INNGEST_EVENT_KEY, // optional
-    mode: "cloud", // ensure cloud mode
 })
 
 // create user
