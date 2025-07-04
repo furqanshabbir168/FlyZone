@@ -2,7 +2,7 @@ import { Inngest } from "inngest";
 import userModel from "../Models/userModel.js";
 
 // Create a client to send and receive events
-export const inngest = new Inngest({ id: "my-app" });
+export const inngest = new Inngest({ id: "fly-zone" });
 
 // create user
 const syncUserCreation = inngest.createFunction(
