@@ -9,7 +9,7 @@ import Home from "./Components/Home/Home";
 import Loading from "../../frontend/src/Components/Loading/Loading";
 
 function App () {
-  const url = 'https://flyzone-backend-eight.vercel.app/'
+  const url = 'https://flyzone-backend-eight.vercel.app'
   const location = useLocation();
   const isHomePage = location.pathname === "/";
   const [loading , setLoading] = useState(false);
