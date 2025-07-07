@@ -1,5 +1,5 @@
 .home-container {
-  background-image: url('../../assets/admin-banner.avif');
+  background-image: url('../../assets/admin.avif');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -26,6 +26,7 @@
   color: #2469ff; /* Clean light color */
 }
 
+
 .home-content h1 {
   font-size: 3rem;
   margin-bottom: 20px;
@@ -34,8 +35,9 @@
 .home-content p {
   font-size: 1.4rem; /* Bigger */
   line-height: 1.8;
-  color: #2469ff; /* Bright white-ish */
+  color: #000000; /* Bright white-ish */
   margin-bottom: 10px;
+  font-weight: bold;
 }
 .go-dashboard-link {
   display: inline-flex;

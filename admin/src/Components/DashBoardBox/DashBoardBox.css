@@ -62,15 +62,20 @@
 }
 
 /* === Mobile Responsive === */
+/* === Mobile Responsive === */
 @media screen and (max-width: 768px) {
   .boxes {
     margin-left: 0;
     margin-top: 0;
     flex-direction: column;
-    
+    align-items: center; /* Center boxes */
   }
+
   .boxes > div {
-    width: 400px;
-    max-height: 80px;
+    width: 90%; /* Take up 90% of screen */
+    max-width: 330px; /* Never get too big */
+    min-width: auto; /* Override earlier */
+    max-height: 90px; /* Optional: trim height */
   }
 }
+
