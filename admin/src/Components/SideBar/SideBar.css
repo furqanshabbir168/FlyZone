@@ -58,7 +58,8 @@
     position: static;
     right: 0;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center; /* Instead of space-around */
+  gap: 10px; /* Control spacing between items */
     flex-direction: row;
     padding: 5px;
     background-color: rgba(204, 228, 255, 0.9);
@@ -71,9 +72,8 @@
     flex-direction: column; /* icon on top, text below */
     align-items: center;
     justify-content: center;
-    gap: 4px;
     font-size: 10px;
-    padding: 16px 10px;
+    padding: 6px 10px; /* smaller padding to save space */
     white-space: nowrap;
   }
 
