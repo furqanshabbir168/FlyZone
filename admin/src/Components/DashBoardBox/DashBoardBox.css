@@ -1,0 +1,76 @@
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  margin-left: 230px; /* adjust if sidebar width changes */
+  margin-top: 110px; /* leave space for navbar */
+  background: linear-gradient(to bottom, #f8f9fa, #b7d3f8, #f1f5f9); 
+}
+
+.boxes > div {
+  flex: 1 1 200px;
+  background-color: rgba(204, 228, 255, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid #979797;
+  border-radius: 20px;
+  padding: 20px;
+  color: #333;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 12px;
+  cursor: pointer;
+  position: relative;
+  min-width: 200px;
+}
+
+.boxes > div svg {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #2469ff;
+  width: 24px;
+  height: 24px;
+}
+
+.boxes > div h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(58, 58, 58);
+}
+
+.boxes > div .value {
+  font-size: 26px;
+  font-weight: bold;
+  color: #2469ff;
+}
+
+.boxes > div:hover {
+  background-color: #dbe6fa;
+  transform: translateY(-4px);
+}
+
+.boxes .alert {
+  border: 2px solid #2469ff;
+  box-shadow: 0 4px 10px rgba(36, 105, 255, 0.1);
+  background-color: #dbe6fa;
+  color: #2469ff;
+}
+
+/* === Mobile Responsive === */
+@media screen and (max-width: 768px) {
+  .boxes {
+    margin-left: 0;
+    margin-top: 0;
+    flex-direction: column;
+    
+  }
+  .boxes > div {
+    width: 400px;
+    max-height: 80px;
+  }
+}

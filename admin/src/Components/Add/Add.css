@@ -1,0 +1,183 @@
+
+.add-form {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px;
+  gap: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
+  margin-top: 110px;
+  margin-left: 230px;
+}
+
+/* Left Upload Section */
+.add-form-left {
+  flex: 1;
+}
+
+.section-title {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.image-label {
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.upload-preview {
+  max-height: 200px;
+  object-fit: contain;
+}
+
+/* Right Input Section */
+.add-form-right {
+  flex: 2;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 20px;
+}
+
+/* Form Fields */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input,
+.textarea {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+}
+
+.textarea {
+  resize: none;
+  height: 100px;
+}
+
+/* Features */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.feature-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #e5f1ff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  white-space: nowrap;
+  color: #007bff;
+}
+
+/* Popular Checkbox */
+.mark-popular {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 5px;
+}
+
+/* Date & Time Slots */
+.date-slot-block {
+  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 10px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+p{
+  color: #007bff;
+}
+
+.time-slot-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.time-slot {
+  flex: 1;
+  min-width: 120px;
+}
+.input:focus,
+.textarea:focus,
+select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+  background-color: #fefeff;
+}
+
+
+/* Buttons */
+.add-date-btn,
+.add-time-btn,
+.remove-date-btn,
+.submit-btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.add-date-btn:hover,
+.add-time-btn:hover,
+.submit-btn:hover {
+  background-color: #0063d1;
+}
+
+.remove-date-btn {
+  background-color: #ff4d4f;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+}
+
+.remove-date-btn:hover {
+  background-color: #d9363e;
+}
+
+.submit-btn {
+  grid-column: span 2;
+}
+.mark-popular label{
+  color: #007bff;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .add-form {
+    flex-direction: column;
+    padding: 20px;
+    margin: auto;
+  }
+
+  .submit-btn {
+    grid-column: span 1;
+  }
+}
