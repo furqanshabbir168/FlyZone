@@ -10,7 +10,11 @@ const PORT = 4000;
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: "https://fly-zone-admin.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+}));
 app.use(express.json());
 app.use(clerkMiddleware());
 
