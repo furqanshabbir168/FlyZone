@@ -10,7 +10,8 @@
   top: 0;
   z-index: 100;
   position: fixed;
-  width: 94%;
+  width: 100%; /* Fixed to full width */
+  box-sizing: border-box; /* Avoid padding overflow */
 }
 
 .nav-bar-left h1 {
@@ -33,7 +34,7 @@
 }
 
 .nav-bar-right button {
-  padding: 8px 18px;
+  padding: 8px 16px;
   font-size: 14px;
   background-color: #2469ff;
   color: white;
@@ -41,6 +42,7 @@
   border-radius: 8px;
   cursor: pointer;
   transition: 0.2s ease-in-out;
+  white-space: nowrap;
 }
 
 .nav-bar-right button:hover {
@@ -51,18 +53,30 @@
   background-color: #144ae2;
 }
 
-/* Responsive */
+/* ✅ Mobile Responsive Fix */
 @media (max-width: 768px) {
   .nav-bar {
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px;
+    padding: 15px 20px;
+    gap: 10px;
+  }
+
+  .nav-bar-left h1 {
+    font-size: 20px;
+  }
+
+  .nav-bar-left p {
+    font-size: 10px;
   }
 
   .nav-bar-right {
-    margin-top: 10px;
     width: 100%;
-    display: flex;
     justify-content: flex-end;
+  }
+
+  .nav-bar-right button {
+    padding: 6px 14px;
+    font-size: 12px;
   }
 }
