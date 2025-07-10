@@ -24,27 +24,29 @@
   font-size: 18px;
   margin-top: 10px;
 }
-.explore{
+
+.explore {
   display: flex;
   flex-direction: row;
   align-items: center;
-  text-align: center;
   background-color: rgb(77, 58, 248);
   max-width: fit-content;
   height: 40px;
   border-radius: 30px;
-  padding-left: 15px;
-  padding-right: 15px;
-  gap: 15px;
+  padding: 0 15px;
+  gap: 10px;
   margin-top: 20px;
   cursor: pointer;
 }
-.explore button{
-  background-color: rgb(77, 58, 248);
+
+.explore button {
+  background-color: transparent;
   border: none;
   color: white;
+  font-size: 15px;
   cursor: pointer;
 }
+
 .info-strip {
   margin-top: 20px;
   background-color: rgba(0, 0, 0, 0.4);
@@ -54,34 +56,60 @@
   font-weight: 500;
 }
 
-/* 📱 Mobile Responsive */
+/* 📱 Tablet + Mobile */
 @media screen and (max-width: 768px) {
   .hero {
-    padding: 40px 20px;
+    padding: 60px 20px;
     justify-content: center;
     text-align: center;
-    height: 60vh;
-    padding-top: 80px;
-    padding-bottom: 80px;
+    height: auto;
+    min-height: 65vh;
   }
-  .explore{
-    justify-content: center;
-    display: flex;
-    margin: auto;
-    margin-top: 20px;
+
+  .hero-content {
+    max-width: 100%;
   }
 
   .hero-content h1 {
     font-size: 36px;
-    color: white;
   }
 
   .hero-content p {
     font-size: 16px;
   }
 
+  .explore {
+    justify-content: center;
+    margin: 20px auto 0;
+  }
+
   .info-strip {
     font-size: 14px;
     margin-top: 16px;
+  }
+}
+
+/* 📱 Extra-Small Screens */
+@media screen and (max-width: 400px) {
+  .hero-content h1 {
+    font-size: 28px;
+  }
+
+  .hero-content p {
+    font-size: 14px;
+  }
+
+  .explore {
+    height: 36px;
+    padding: 0 12px;
+    gap: 8px;
+  }
+
+  .explore button {
+    font-size: 14px;
+  }
+
+  .info-strip {
+    font-size: 13px;
   }
 }

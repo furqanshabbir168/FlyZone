@@ -1,0 +1,126 @@
+
+.bookings {
+  padding: 2rem;
+  padding-top: 130px;
+}
+
+.topheading h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #3b82f6;
+}
+
+.booking-card {
+   background-color: rgba(30, 144, 255, 0.2);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+.error{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: red;
+}
+.card-right img {
+  width: 70%;
+  height: auto;
+}
+
+.card-center {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.card-centre-top h4 {
+  font-size: 1.2rem;
+  color: #3b82f6;
+}
+
+.card-centre-top h5 {
+  color: #475569;
+  margin: 0.25rem 0;
+}
+
+.card-centre-top p {
+  color: #64748b;
+}
+
+.card-centre-bottom p {
+  color: #475569;
+  font-weight: 500;
+}
+
+.card-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-right-top h2 {
+  color: #10b981;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.card-right-top button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.card-right-top button:hover {
+  background-color: #2563eb;
+}
+
+.card-right-centre p,
+.card-right-bottom p {
+  color: #475569;
+  font-size: 0.95rem;
+  margin: 0.3rem 0;
+}
+
+/* 📱 Responsive Layout */
+@media (max-width: 768px) {
+  .booking-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card-center,
+  .card-right {
+    width: 100%;
+    padding: 0.5rem 0;
+  }
+
+  .card-right-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card-right-top h2 {
+    font-size: 1.3rem;
+  }
+
+  .card-right-top button {
+    padding: 0.4rem 0.8rem;
+  }
+}

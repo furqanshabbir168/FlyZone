@@ -29,7 +29,7 @@ function App () {
   return(
     <div>
       {loading && <Loading/>}
-      <Toaster/>
+      <Toaster position="top-right" reverseOrder={false} />
       <NavBar/>
       <ScrollToTop/>
       <Routes>
@@ -37,7 +37,7 @@ function App () {
         <Route path="/flights" element={<Flights/>}/>
         <Route path="/flight/:id" element={<FlightDetails/>}/>
         <Route path="/flight/:id/seats" element={<FlightSeats/>}/>
-        <Route path="my-booking" element={<MyBooking/>}/>
+        <Route path="/my-booking" element={<MyBooking/>}/>
       </Routes>
       <Footer/>
       

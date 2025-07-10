@@ -7,9 +7,10 @@ import AddFlight from "./Pages/AddFlight";
 import { Toaster } from 'react-hot-toast';
 import Home from "./Components/Home/Home";
 import Loading from "../../frontend/src/Components/Loading/Loading";
+import ListedFlight from "./Pages/ListedFlight";
 
 function App () {
-  const url = 'https://flyzone-backend-eight.vercel.app'
+  const url = 'http://localhost:4000'
   const location = useLocation();
   const isHomePage = location.pathname === "/";
   const [loading , setLoading] = useState(false);
@@ -32,6 +33,7 @@ function App () {
         <Route path="/" element={<Home/>}/>
         <Route path="/admin/dashboard" element={<DashBoard/>}/>
         <Route path="/admin/add-flight" element={<AddFlight url={url}/>}/>
+        <Route path="/admin/listed-flights" element={<ListedFlight url={url}/>}/>
       </Routes>
     </div>
   );

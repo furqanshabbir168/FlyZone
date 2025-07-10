@@ -1,13 +1,21 @@
 .footer {
-  background: linear-gradient(to right, #0f172a, #1e293b); /* dark gradient */
+  background: linear-gradient(to right, #0f172a, #1e293b);
   color: #f1f5f9;
   padding: 50px 20px 20px;
   font-family: Arial, sans-serif;
 }
 
+/* Columns container */
+.footer-columns {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  text-align: start;
+}
+
 /* Headings */
 .footer h1 {
-  font-size: 20px;
+  font-size: 23px;
   color: #60a5fa;
   margin-bottom: 15px;
 }
@@ -23,6 +31,7 @@
 .footer ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .footer li {
@@ -35,27 +44,23 @@
   color: #60a5fa;
 }
 
-/* Sections */
+/* Column blocks */
 .footer .left,
 .footer .middle,
 .footer .right {
   width: 100%;
-  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
   text-align: start;
+  align-items: flex-start;
 }
 
-/* Description max width */
-.footer .left p {
-  max-width: 400px;
-  margin: 0 auto 20px;
-}
-
-/* Social icons under description */
+/* Social icons */
 .footer .social {
   display: flex;
   justify-content: center;
   gap: 15px;
-  margin-top: 15px;
+  margin-top: 30px;
 }
 
 .footer .social svg {
@@ -63,7 +68,7 @@
   height: 24px;
   color: #cbd5e1;
   cursor: pointer;
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .footer .social svg:hover {
@@ -90,30 +95,20 @@
   text-align: center;
 }
 
-/* Desktop layout */
+/* Desktop styles */
 @media (min-width: 768px) {
-  .footer {
-    text-align: left;
+  .footer-columns {
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   .footer .left,
   .footer .middle,
   .footer .right {
     width: 30%;
-    display: inline-block;
-    vertical-align: top;
-    margin-bottom: 0;
-  }
-
-  .footer .left p {
-    margin-left: 0;
   }
 
   .footer .social {
     justify-content: flex-start;
-  }
-
-  .footer .copy-right {
-    justify-content: center;
   }
 }

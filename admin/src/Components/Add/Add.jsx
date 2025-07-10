@@ -214,7 +214,7 @@ function Add({ url }) {
 
         <div className="mark-popular">
           <label>
-            <input type="checkbox" checked={isPopular} onChange={() => setIsPopular(!isPopular)} required/>
+            <input type="checkbox" checked={isPopular} onChange={() => setIsPopular(!isPopular)} />
             Mark as Popular
           </label>
         </div>

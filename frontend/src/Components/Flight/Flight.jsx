@@ -1,13 +1,15 @@
 import React, { useContext } from "react";
 import './Flight.css'
 import { useParams } from "react-router-dom";
-import flights from "../../assets/flights";
+import { CompanyContext } from "../../CompanyContext";
 
 function Flight () {
 
+    const {flights} = useContext(CompanyContext);
     const { id } = useParams();
-    const flight = flights.find((f) => f.id === parseInt(id)); // ⚠️ parseInt is important
+    const flight = flights.find((f) => f._id === id);
     if (!flight) return <p>Flight not found</p>;
+
 
     
 

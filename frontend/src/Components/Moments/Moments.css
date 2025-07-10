@@ -61,8 +61,19 @@
 }
 
 @media (max-width: 768px) {
-  .moments-container h1 {
-    font-size: 22px;
-    height: 10vh;
+  .thumbnail-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .thumbnail {
+    width: 90%;
+    height: auto;
+  }
+
+  .thumbnail img {
+    height: auto;
+    max-height: 200px;
   }
 }
+

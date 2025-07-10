@@ -17,7 +17,7 @@ function Popular () {
             </div>
             <div className="flights">
                 {flights.filter(flight=>flight.isPopular===true).map((flight)=>{
-                    return <div key={flight.id} onClick={()=>{navigate(`/flight/${flight.id}`)}}>
+                    return <div key={flight._id} onClick={()=>{navigate(`/flight/${flight._id}`)}}>
                         <img src={flight.image} alt="" />
                         <h3>{flight.title}</h3>
                         <div className="details">

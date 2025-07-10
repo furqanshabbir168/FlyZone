@@ -18,7 +18,7 @@ function FlightsDisplay() {
       {/* Flight cards */}
       <div className="flights">
         {flights.map((flight) => (
-          <div className="flight-card" key={flight.id} onClick={()=>{navigate(`/flight/${flight.id}`)}}>
+          <div className="flight-card" key={flight._id} onClick={()=>{navigate(`/flight/${flight._id}`)}}>
             <img src={flight.image} alt={flight.title} />
             <h3>{flight.title}</h3>
             <div className="details">

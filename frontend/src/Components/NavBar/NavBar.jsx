@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import "./NavBar.css";
 import { Menu, Search } from "lucide-react";
 import { useClerk, UserButton, useUser } from "@clerk/clerk-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentState, setCurrentState] = useState("home");
-  const {user} = useUser();
-  const {openSignIn} = useClerk();
-  const naviagte = useNavigate();
+  const { user } = useUser();
+  const { openSignIn } = useClerk();
 
   return (
     <div className="navbar">
@@ -25,32 +24,70 @@ function NavBar() {
       <div className="navbar-middle">
         <ul>
           <li><Link onClick={() => setCurrentState("home")} className={currentState === "home" ? "active" : ""} to="/">Home</Link></li>
-          <li><Link onClick={() => setCurrentState("flights")} className={currentState === "flights" ? "active" : ""} to="flights">Flights</Link></li>
-          <li><Link onClick={() => setCurrentState("about")} className={currentState === "about" ? "active" : ""}>About us</Link></li>
-          <li><Link onClick={() => setCurrentState("booking")} className={currentState === "booking" ? "active" : ""} to="my-booking">Bookings</Link></li>
-          <li><Link onClick={() => setCurrentState("admin")} className={currentState === "admin" ? "active" : ""}>Admin pannel</Link></li>
+          <li><Link onClick={() => setCurrentState("flights")} className={currentState === "flights" ? "active" : ""} to="/flights">Flights</Link></li>
+          <li><Link onClick={() => setCurrentState("about")} className={currentState === "about" ? "active" : ""} to="/about">About us</Link></li>
+          <li><Link onClick={() => setCurrentState("booking")} className={currentState === "booking" ? "active" : ""} to="/my-booking">Bookings</Link></li>
+          <li><Link onClick={() => setCurrentState("admin")} className={currentState === "admin" ? "active" : ""} to="/admin">Admin Panel</Link></li>
         </ul>
       </div>
 
       {/* Desktop right nav */}
       <div className="navbar-right">
         <Search />
-        {!user?<button className="login" onClick={openSignIn}>Login</button>:<UserButton/>}
+        {!user ? (
+          <button className="login" onClick={openSignIn}>Login</button>
+        ) : (
+          <UserButton />
+        )}
       </div>
 
-      {/* Mobile dropdown (only visible when isOpen) */}
+      {/* Mobile dropdown */}
       {isOpen && (
         <div className="dropdown-menu">
           <ul>
-            <li onClick={() => setCurrentState("home")} className={currentState === "home" ? "active" : "home"}>Home</li>
-            <li onClick={() => setCurrentState("flights")} className={currentState === "flights" ? "active" : "flights"}>Flights</li>
-            <li onClick={() => setCurrentState("about")} className={currentState === "about" ? "active" : "about"}>About us</li>
-            <li onClick={() => setCurrentState("booking")} className={currentState === "booking" ? "active" : "booking"}>Bookings</li>
-            <li onClick={() => setCurrentState("admin")} className={currentState === "admin" ? "active" : "admin"}>Admin Panel</li>
+            <li>
+              <Link
+                to="/"
+                className={currentState === "home" ? "active" : ""}
+                onClick={() => { setCurrentState("home"); setIsOpen(false); }}
+              >Home</Link>
+            </li>
+            <li>
+              <Link
+                to="/flights"
+                className={currentState === "flights" ? "active" : ""}
+                onClick={() => { setCurrentState("flights"); setIsOpen(false); }}
+              >Flights</Link>
+            </li>
+            <li>
+              <Link
+                to="/about"
+                className={currentState === "about" ? "active" : ""}
+                onClick={() => { setCurrentState("about"); setIsOpen(false); }}
+              >About us</Link>
+            </li>
+            <li>
+              <Link
+                to="/my-booking"
+                className={currentState === "booking" ? "active" : ""}
+                onClick={() => { setCurrentState("booking"); setIsOpen(false); }}
+              >Bookings</Link>
+            </li>
+            <li>
+              <Link
+                to="/admin"
+                className={currentState === "admin" ? "active" : ""}
+                onClick={() => { setCurrentState("admin"); setIsOpen(false); }}
+              >Admin Panel</Link>
+            </li>
           </ul>
           <div className="mobile-login">
             <Search />
-            {!user?<button className="login" onClick={openSignIn}>Login</button>:<UserButton/>}
+            {!user ? (
+              <button className="login" onClick={openSignIn}>Login</button>
+            ) : (
+              <UserButton />
+            )}
           </div>
         </div>
       )}
