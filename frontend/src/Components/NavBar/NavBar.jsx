@@ -3,6 +3,7 @@ import "./NavBar.css";
 import { Menu, Search } from "lucide-react";
 import { useClerk, UserButton, useUser } from "@clerk/clerk-react";
 import { Link } from "react-router-dom";
+import logo from '../../assets/logo-removebg-preview.png'
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,6 +14,7 @@ function NavBar() {
   return (
     <div className="navbar">
       <div className="navbar-left">
+        <img src={logo} alt="" />
         <h1>Fly Zone</h1>
       </div>
 

@@ -1,5 +1,5 @@
 import './Booking.css';
-import icon from '../../assets/icon.png';
+import icon from '../../assets/logo-removebg-preview.png';
 import { useEffect, useState, useContext } from 'react';
 import { useUser } from '@clerk/clerk-react';
 import axios from 'axios';
