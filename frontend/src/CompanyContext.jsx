@@ -9,6 +9,7 @@ function CompanyContextProvider(props){
 
     const [ flights , setFlights ] = useState([]);
     const url = 'https://flyzone-backend-eight.vercel.app'
+    // const url = 'http://localhost:4000';
 
     // fetch flights
     async function fetchFlightsData() {

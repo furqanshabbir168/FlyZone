@@ -85,6 +85,17 @@
   cursor: pointer;
   transition: background 0.3s ease;
 }
+.pay:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.note{
+  color: red !important;
+  font-weight: bold;
+
+}
+
 
 .card-right-top button:hover {
   background-color: #2563eb;

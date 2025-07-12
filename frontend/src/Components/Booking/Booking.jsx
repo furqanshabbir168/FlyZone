@@ -24,6 +24,22 @@ function Booking() {
     fetchBookings();
   }, [isLoaded, user, url]);
 
+  // stripe
+  const handlePayment = async (bookingId) => {
+  try {
+    const res = await axios.post(`${url}/api/booking/payment/${bookingId}`);
+    if (res.data?.session_url) {
+      window.location.href = res.data.session_url; // ⬅️ Redirect to Stripe checkout
+    } else {
+      toast.error("Stripe session not created");
+    }
+  } catch (err) {
+    console.log(err);
+    toast.error("Stripe payment failed");
+  }
+};
+
+
   return (
     <div className='bookings'>
       <div className='topheading'>
@@ -45,15 +61,24 @@ function Booking() {
                     <h4>{flight?.title || "Unknown Flight"}</h4>
                     <h5>{flight?.airline || "Unknown Airline"}</h5>
                     <p>{flight?.duration || "-"}</p>
+                    <p className='note'>Note : Your booking will be auto cancalled, If not paid within 15 minutes.</p>
                   </div>
                   <div className='card-centre-bottom'>
-                    <p>{booking.flightDate} at {booking.flightTime}</p>
+                    <p>Travel Date : {booking.flightDate} at {booking.flightTime}</p>
                   </div>
                 </div>
                 <div className='card-right'>
                   <div className='card-right-top'>
                     <h2>${booking.amount}</h2>
-                    <button>Pay Now</button>
+                   <button
+  onClick={(e) => {
+    e.target.disabled = true;
+    handlePayment(booking._id);
+  }}
+className='pay'>
+  Pay Now
+</button>
+
                   </div>
                   <div className='card-right-centre'>
                     <p>flight Id : {booking.flightId}</p>
