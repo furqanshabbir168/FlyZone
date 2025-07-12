@@ -60,6 +60,9 @@ const autoDeleteUnpaidBooking = inngest.createFunction(
       const booking = await bookingModel.findById(bookingId);
       if (booking && !booking.paymentStatus) {
         await bookingModel.findByIdAndDelete(bookingId);
+        console.log("Deleted unpaid booking:", bookingId);
+      } else{
+        console.log("Booking already paid or not found:", bookingId);
       }
     });
   }
