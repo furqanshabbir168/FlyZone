@@ -47,22 +47,19 @@ const syncUserUpdation = inngest.createFunction(
   }
 );
 
-// Auto-delete unpaid booking after 1 minute (for testing)
+// Auto-delete unpaid booking after 15 minute
 const autoDeleteUnpaidBooking = inngest.createFunction(
   { id: "auto-delete-unpaid-booking" },
   { event: "booking/placed" },
   async ({ event, step }) => {
-    const oneMinuteLater = new Date(Date.now() + 1 * 60 * 1000); // change to 15 * 60 * 1000 later
-    await step.sleepUntil("wait-for-1-min", oneMinuteLater);
+    const fifteenMinuteLater = new Date(Date.now() + 15 * 60 * 1000); // change to 15 * 60 * 1000 later
+    await step.sleepUntil("wait-for-1-min", fifteenMinuteLater);
 
     await step.run("check-and-delete-booking", async () => {
       const bookingId = event.data.bookingId;
       const booking = await bookingModel.findById(bookingId);
       if (booking && !booking.paymentStatus) {
         await bookingModel.findByIdAndDelete(bookingId);
-        console.log("Deleted unpaid booking:", bookingId);
-      } else{
-        console.log("Booking already paid or not found:", bookingId);
       }
     });
   }
