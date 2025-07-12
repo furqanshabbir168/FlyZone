@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./NavBar.css";
 import { Menu, Search } from "lucide-react";
 import { useClerk, UserButton, useUser } from "@clerk/clerk-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from '../../assets/logo-removebg-preview.png'
 
 function NavBar() {
@@ -10,6 +10,7 @@ function NavBar() {
   const [currentState, setCurrentState] = useState("home");
   const { user } = useUser();
   const { openSignIn } = useClerk();
+  const navigate = useNavigate();
 
   return (
     <div className="navbar">
@@ -35,7 +36,7 @@ function NavBar() {
 
       {/* Desktop right nav */}
       <div className="navbar-right">
-        <Search />
+        <Search onClick={()=>{navigate('/flights')}}/>
         {!user ? (
           <button className="login" onClick={openSignIn}>Login</button>
         ) : (
@@ -84,7 +85,7 @@ function NavBar() {
             </li>
           </ul>
           <div className="mobile-login">
-            <Search />
+            <Search onClick={()=>{navigate('/flights')}}/>
             {!user ? (
               <button className="login" onClick={openSignIn}>Login</button>
             ) : (
