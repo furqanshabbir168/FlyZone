@@ -38,7 +38,8 @@ async function placeBooking(request, response) {
     await inngest.send({
       name: "booking/placed",
       data: {
-      bookingId: newBooking._id.toString()
+      bookingId: newBooking._id.toString(),
+      userId: userId,
     }
     });
 
