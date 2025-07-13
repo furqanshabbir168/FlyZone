@@ -10,6 +10,7 @@ import NavBar from "./Components/NavBar/NavBar";
 import Footer from "./Components/Footer/Footer";
 import Loading from "./Components/Loading/Loading";
 import ScrollToTop from "./Components/ScrollToTop";
+import Verify from "./Components/Verify/Verify";
 
 function App () {
 
@@ -38,6 +39,7 @@ function App () {
         <Route path="/flight/:id" element={<FlightDetails/>}/>
         <Route path="/flight/:id/seats" element={<FlightSeats/>}/>
         <Route path="/my-booking" element={<MyBooking/>}/>
+        <Route path="/verify" element={<Verify/>}/>
       </Routes>
       <Footer/>
       

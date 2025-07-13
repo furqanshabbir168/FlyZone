@@ -1,14 +1,14 @@
-import React, { useState, useMemo, useCallback, useContext } from "react";
+import React, { useState, useMemo, useCallback, useContext, useEffect } from "react";
 import "./Seats.css";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Clock } from "lucide-react";
 import { useUser } from "@clerk/clerk-react";
 import { CompanyContext } from "../../CompanyContext";
-import axios from 'axios';
-import toast from 'react-hot-toast'
+import axios from "axios";
+import toast from "react-hot-toast";
 
 function Seats() {
-  const { flights , url } = useContext(CompanyContext);
+  const { flights, url } = useContext(CompanyContext);
   const { id } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
@@ -17,8 +17,10 @@ function Seats() {
 
   const [selectedTime, setSelectedTime] = useState("");
   const [selectedSeats, setSelectedSeats] = useState([]);
+  const [reservedSeats, setReservedSeats] = useState([]);
 
   const flight = useMemo(() => flights.find(f => f._id === id), [flights, id]);
+
   const timeSlots = useMemo(() => {
     if (!flight || !selectedDate) return [];
     const dateData = flight.availableDates.find(d => d.date === selectedDate);
@@ -29,57 +31,58 @@ function Seats() {
   const totalPrice = pricePerSeat * selectedSeats.length;
 
   const toggleSeat = useCallback((seat) => {
+    if (reservedSeats.includes(seat)) return;
     setSelectedSeats(prev =>
       prev.includes(seat) ? prev.filter(s => s !== seat) : [...prev, seat]
     );
-  }, []);
-// handle proceed btn
+  }, [reservedSeats]);
+
+  // Fetch reserved seats when flight time or date changes
+  useEffect(() => {
+    const fetchReservedSeats = async () => {
+      if (!selectedTime || !selectedDate || !flight?._id) return;
+
+      try {
+        const res = await axios.get(`${url}/api/booking/reserved`, {
+          params: {
+            flightId: flight._id,
+            date: selectedDate,
+            time: selectedTime,
+          },
+        });
+        setReservedSeats(res.data.reservedSeats || []);
+      } catch (error) {
+        console.error("Failed to fetch reserved seats:", error);
+      }
+    };
+
+    fetchReservedSeats();
+  }, [selectedTime, selectedDate, flight]);
+
   const handleCheckout = async () => {
-  if (!isLoaded) {
-    toast.error("User data is still loading...");
-    return;
-  }
+    if (!isLoaded) return toast.error("User is still loading...");
+    if (!user?.id) return toast.error("Please login to proceed.");
+    if (!selectedTime) return toast.error("Please select a time.");
+    if (selectedSeats.length === 0) return toast.error("Select at least one seat.");
+    if (!flight?._id || !selectedDate) return toast.error("Flight/date missing!");
 
-  if (!user?.id) {
-    toast.error("Please Login here to proceed");
-    return;
-  }
+    const bookingInfo = {
+      userId: user.id,
+      flightId: flight._id,
+      flightDate: selectedDate,
+      flightTime: selectedTime,
+      seats: selectedSeats,
+      amount: totalPrice,
+    };
 
-  if (!selectedTime) {
-    toast.error("Please select a flight time!");
-    return;
-  }
-
-  if (selectedSeats.length === 0) {
-    toast.error("Please select at least one seat!");
-    return;
-  }
-
-  if (!flight?._id || !selectedDate) {
-    toast.error("Flight or date information missing!");
-    return;
-  }
-
-  const bookingInfo = {
-    userId: user.id,
-    flightId: flight._id,
-    flightDate: selectedDate,
-    flightTime: selectedTime,
-    seats: selectedSeats,
-    amount: totalPrice,
+    try {
+      const res = await axios.post(`${url}/api/booking/place`, bookingInfo);
+      toast.success(res.data.message);
+      navigate("/my-booking", { state: { booking: res.data.data } });
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Booking failed.");
+    }
   };
-
-  try {
-    const response = await axios.post(`${url}/api/booking/place`, bookingInfo);
-    toast.success(response.data.message); // Backend message
-    navigate("/my-booking", { state: { booking: response.data.data } });
-  } catch (error) {
-    const errMsg = error.response?.data?.message || "Booking failed. Try again.";
-    toast.error(errMsg);
-    console.error("Booking error:", error);
-  }
-};
-
 
   const seatRows = useMemo(() => [
     ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8"],
@@ -107,7 +110,7 @@ function Seats() {
     <div className="seats-page">
       <div className="seat-layout">
 
-        {/* Timing section */}
+        {/* Timing Selection */}
         <div className="timings-box">
           <h3>Available Timings</h3>
           {timeSlots.length === 0 ? (
@@ -128,36 +131,48 @@ function Seats() {
           )}
         </div>
 
-        {/* Seat layout */}
+        {/* Seat Selection */}
         <div className="right-section-seat">
           <div className="all-seats">
             {seatRows.map((row, i) => (
               <div className="seat-row" key={i}>
                 {[0, 4].map((start) => (
                   <div className="seat-side" key={start}>
-                    {row.slice(start, start + 4).map((seat) => (
-                      <div
-                        key={seat}
-                        className={selectedSeats.includes(seat) ? "active-seat" : "seat-box"}
-                        onClick={() => toggleSeat(seat)}
-                      >
-                        {seat}
-                      </div>
-                    ))}
+                    {row.slice(start, start + 4).map((seat) => {
+                      const isReserved = reservedSeats.includes(seat);
+                      const isSelected = selectedSeats.includes(seat);
+
+                      return (
+                        <div
+                          key={seat}
+                          className={
+                            isReserved
+                              ? "reserved-seat"
+                              : isSelected
+                              ? "active-seat"
+                              : "seat-box"
+                          }
+                          onClick={() => {
+                            if (isReserved) return toast.error("Seat already reserved");
+                            toggleSeat(seat);
+                          }}
+                        >
+                          {seat}
+                        </div>
+                      );
+                    })}
                   </div>
                 ))}
               </div>
             ))}
           </div>
 
-          {/* Total Price */}
+          {/* Total and Checkout */}
           <div className="total-price">Total Price: ${totalPrice}</div>
-
           <button className="checkout-btn" onClick={handleCheckout}>
             Proceed to Checkout →
           </button>
         </div>
-
       </div>
     </div>
   );

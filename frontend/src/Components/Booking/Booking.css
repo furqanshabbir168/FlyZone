@@ -27,7 +27,7 @@
     margin: auto;
     justify-content: center;
     align-items: center;
-    font-size: 50px;
+    font-size: 30px;
     color: red;
 }
 .card-right img {
@@ -94,6 +94,10 @@
   color: red !important;
   font-weight: bold;
 
+}
+.success{
+  color: #10b981 !important;
+  font-weight: bold;
 }
 
 

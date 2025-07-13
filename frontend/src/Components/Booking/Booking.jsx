@@ -61,7 +61,11 @@ function Booking() {
                     <h4>{flight?.title || "Unknown Flight"}</h4>
                     <h5>{flight?.airline || "Unknown Airline"}</h5>
                     <p>{flight?.duration || "-"}</p>
-                    <p className='note'>Note : Your booking will be auto cancalled, If not paid within 15 minutes.</p>
+                    {booking.paymentStatus===false?
+                    <p className='note'>Note : Your booking will be auto cancalled, If not paid within 30 minutes.</p>:
+                    <p className='success'>Payment made Successfully! <br />
+You’ll receive a confirmation email shortly with your flight details. Thank you for booking with FlyZone.</p>
+                    }
                   </div>
                   <div className='card-centre-bottom'>
                     <p>Travel Date : {booking.flightDate} at {booking.flightTime}</p>
@@ -70,7 +74,9 @@ function Booking() {
                 <div className='card-right'>
                   <div className='card-right-top'>
                     <h2>${booking.amount}</h2>
-                   <button
+                    {booking.paymentStatus===true?
+                    <h2>Paid</h2>:
+                    <button
   onClick={(e) => {
     e.target.disabled = true;
     handlePayment(booking._id);
@@ -78,6 +84,8 @@ function Booking() {
 className='pay'>
   Pay Now
 </button>
+                    }
+                   
 
                   </div>
                   <div className='card-right-centre'>

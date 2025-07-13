@@ -5,7 +5,7 @@ dotenv.config();
 import { inngest } from "../Inngest/index.js";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-const frontend_url = 'http://localhost:5173'
+const frontend_url = 'https://flyzone.vercel.app'
 
 
 // place booking
@@ -125,4 +125,61 @@ async function stripePayment(request, response) {
   }
 }
 
-export { placeBooking , myBookings , stripePayment};
+// GET reserved seats based on flight, date, and time
+async function reservedSeats(request,response) {
+    try{
+      const {flightId , date , time } = request.query;
+
+      if (!flightId || !date || !time) {
+      return response.status(400).json({ message: "Missing flightId, date, or time" });
+    }
+
+    const bookings = await bookingModel.find({
+      flightId,
+      flightDate : date ,
+      flightTime : time
+    })
+
+    const reservedSeats = bookings.flatMap(booking => booking.seats);
+
+    response.status(200).json({ reservedSeats });
+
+    }catch(error){
+      console.error("Error getting reserved seats:", error);
+      response.status(500).json({ message: "Server error getting reserved seats" });
+    }
+}
+
+// verify payment
+async function verifyPayment(request, response) {
+  try {
+    const { bookingId, success } = request.body;
+
+    if (!bookingId) {
+      return response.status(400).json({ message: "Booking ID is required" });
+    }
+
+    if (success === 'true') {
+      await bookingModel.findByIdAndUpdate(bookingId, { paymentStatus: true });
+
+      return response.status(200).json({
+        success: true,
+        message: "Payment made successfully",
+      });
+    } else {
+      return response.status(400).json({
+        success: false,
+        message: "Payment redirect failed",
+      });
+    }
+  } catch (error) {
+    console.error("Verify Payment Error:", error);
+    return response.status(500).json({
+      success: false,
+      message: "Server error during payment verification",
+    });
+  }
+}
+
+
+export { placeBooking , myBookings , stripePayment , reservedSeats , verifyPayment};

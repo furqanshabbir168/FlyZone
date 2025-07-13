@@ -13,7 +13,7 @@ const app = express();
 // Middleware
 app.use(cors({
     origin: [
-    "https://fly-zone-frontend.vercel.app"    
+    "https://flyzone.vercel.app",   
   ],
   credentials: true
 }));
