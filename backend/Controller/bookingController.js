@@ -6,6 +6,7 @@ import { inngest } from "../Inngest/index.js";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const frontend_url = 'https://flyzone.vercel.app'
+// const frontend_url = 'http://localhost:4000'
 
 
 // place booking
