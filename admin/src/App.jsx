@@ -9,10 +9,9 @@ import Home from "./Components/Home/Home";
 import Loading from "../../frontend/src/Components/Loading/Loading";
 import ListedFlight from "./Pages/ListedFlight";
 import FlightDetails from "./Components/FlightDetails/FlightDetails";
-import Booking from "./Pages/Booking";
 
 function App () {
-  const url = 'http://localhost:4000'
+  const url = 'https://flyzone-backend-eight.vercel.app'
   const location = useLocation();
   const isHomePage = location.pathname === "/";
   const [loading , setLoading] = useState(false);

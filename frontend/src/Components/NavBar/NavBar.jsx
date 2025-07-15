@@ -30,7 +30,7 @@ function NavBar() {
           <li><Link onClick={() => setCurrentState("flights")} className={currentState === "flights" ? "active" : ""} to="/flights">Flights</Link></li>
           <li><Link onClick={() => setCurrentState("about")} className={currentState === "about" ? "active" : ""} to="/about">About us</Link></li>
           <li><Link onClick={() => setCurrentState("booking")} className={currentState === "booking" ? "active" : ""} to="/my-booking">Bookings</Link></li>
-          <li><Link onClick={() => setCurrentState("admin")} className={currentState === "admin" ? "active" : ""} to="/admin">Admin Panel</Link></li>
+          <li><Link onClick={() => setCurrentState("admin")} className={currentState === "admin" ? "active" : ""} to="https://fly-zone-admin.vercel.app">Admin Panel</Link></li>
         </ul>
       </div>
 
