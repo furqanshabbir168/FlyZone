@@ -23,9 +23,9 @@ function Footer() {
                     <h1>Company</h1>
                     <ul>
                         <li onClick={() => navigate('/')}>Home</li>
-                        <li onClick={() => navigate('/#about')}>About Us</li>
-                        <li onClick={() => navigate('/#contact')}>Contact Us</li>
-                        <li onClick={() => navigate('/#privacy')}>Privacy Policy</li>
+                        <li onClick={() => navigate('/about')}>About Us</li>
+                        <li onClick={() => navigate('/about')}>Contact Us</li>
+                        <li onClick={() => navigate('/about')}>Privacy Policy</li>
                     </ul>
                 </div>
 
@@ -33,7 +33,7 @@ function Footer() {
                     <h1>Get in touch</h1>
                     <ul>
                         <li>+1-234-567-890</li>
-                        <li>support@flyzone.com</li>
+                        <li>flyzonecompany@gmail.com</li>
                     </ul>
                 </div>
             </div>
