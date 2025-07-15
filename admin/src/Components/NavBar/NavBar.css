@@ -13,6 +13,15 @@
   width: 100%; /* Fixed to full width */
   box-sizing: border-box; /* Avoid padding overflow */
 }
+.link:hover{
+  border-bottom: 2px solid red;
+  color: red !important;
+  
+}
+.link{
+  cursor: pointer;
+  text-decoration: none;
+}
 
 .nav-bar-left h1 {
   font-size: 26px;

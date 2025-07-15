@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import './SideBar.css';
 import { LayoutDashboard, PlusSquare, ListOrdered, ClipboardList } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function SideBar() {
     const [currentState, setCurrentDtate] = useState('dashboard');
@@ -11,6 +12,10 @@ function SideBar() {
         setCurrentDtate(state);
         navigate(path);
     };
+
+    function handleBooking(){
+        toast.error("You can't see bookings in demo mood!")
+    }
 
     return (
         <div className="side-bar">
@@ -39,7 +44,7 @@ function SideBar() {
             </div>
 
             <div
-                onClick={() => handleNavigation('flight-booking', '/admin/bookings')}
+                onClick={handleBooking}
                 className={currentState === "flight-booking" ? "active" : "flight-booking"}
             >
                 <ClipboardList />

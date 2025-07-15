@@ -8,6 +8,8 @@ import { Toaster } from 'react-hot-toast';
 import Home from "./Components/Home/Home";
 import Loading from "../../frontend/src/Components/Loading/Loading";
 import ListedFlight from "./Pages/ListedFlight";
+import FlightDetails from "./Components/FlightDetails/FlightDetails";
+import Booking from "./Pages/Booking";
 
 function App () {
   const url = 'http://localhost:4000'
@@ -34,6 +36,8 @@ function App () {
         <Route path="/admin/dashboard" element={<DashBoard/>}/>
         <Route path="/admin/add-flight" element={<AddFlight url={url}/>}/>
         <Route path="/admin/listed-flights" element={<ListedFlight url={url}/>}/>
+        <Route path="/admin/listed-flights/:id" element={<FlightDetails url={url}/>}/>
+        {/* <Route path="/admin/bookings" element={<Booking/>}/> */}
       </Routes>
     </div>
   );

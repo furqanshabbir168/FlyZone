@@ -6,6 +6,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 function Add({ url }) {
+  const admin = false; // 🔐 Temporary variable to control access
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState(null);
   const [airline, setAirline] = useState('');
@@ -68,6 +69,10 @@ function Add({ url }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!admin) {
+    toast.error("You are not authorized to add flights.");
+    return;
+  }
     setLoading(true);
 
     const formData = new FormData();

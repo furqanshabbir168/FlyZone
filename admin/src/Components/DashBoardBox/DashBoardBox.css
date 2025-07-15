@@ -61,21 +61,60 @@
   color: #2469ff;
 }
 
-/* === Mobile Responsive === */
-/* === Mobile Responsive === */
 @media screen and (max-width: 768px) {
   .boxes {
     margin-left: 0;
-    margin-top: 0;
+    margin-top: 20px;
     flex-direction: column;
-    align-items: center; /* Center boxes */
+    align-items: center;
+    padding: 16px 10px;
   }
 
   .boxes > div {
-    width: 90%; /* Take up 90% of screen */
-    max-width: 330px; /* Never get too big */
-    min-width: auto; /* Override earlier */
-    max-height: 90px; /* Optional: trim height */
+    width: 90%;
+    max-height: 100px;
+    max-width: 300px;
+    min-width: unset;
+    padding: 8px 14px;       /* ⬅ reduced height */
+    gap: 4px;                /* ⬅ tighter spacing */
+    border-radius: 14px;
+  }
+
+  .boxes > div svg {
+    width: 20px;
+    height: 20px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .boxes > div h3 {
+    font-size: 12px;
+  }
+
+  .boxes > div .value {
+    font-size: 18px;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .boxes > div {
+    padding: 6px 12px;
+    gap: 3px;
+    border-radius: 12px;
+  }
+
+  .boxes > div h3 {
+    font-size: 11px;
+  }
+
+  .boxes > div .value {
+    font-size: 16px;
+  }
+
+  .boxes > div svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
 

@@ -3,27 +3,29 @@
   padding: 20px;
   border-radius: 12px;
   margin-top: 30px;
+  margin-left: 230px;
   transition: all 0.3s ease;
-  max-width: 1260px;
+  max-width: 1255px;
   background: linear-gradient(to bottom, #f8f9fa, #b7d3f8, #f1f5f9); 
 }
 
-/* 🖥️ Desktop View */
-@media (min-width: 769px) {
+@media screen and (max-width: 768px) {
   .graph-container {
-    width: calc(100% - 250px); /* Adjust width with sidebar */
-    margin-left: 230px;
-    margin-right: 20px;
-    margin-top: 0;
+    margin-left: 0;
+    margin-top: 20px;
+    border-radius: 10px;
+    max-width: 100%;
+    padding-right: 60px;
   }
 }
 
-/* 📱 Mobile View */
-@media (max-width: 768px) {
+@media screen and (max-width: 480px) {
   .graph-container {
-    width: 91%;
-    height: auto;
     
-    margin-top: 0;
+    margin-top: 15px;
+    border-radius: 8px;
+    padding-right: 30px;
+    border: 2px solid rgb(1, 103, 255);
+    margin: 30px;
   }
 }
